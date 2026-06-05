@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soumajit Das | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0f172a',
+                        darkCard: '#1e293b'
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%2394a3b8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                        'grid-pattern-dark': "url(\"data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='%23ffffff' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Animated Mesh Gradient for the background theme */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(210,100%,93%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(180,100%,93%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(220,100%,93%,1) 0, transparent 50%);
+            transition: all 0.5s ease;
+        }
+
+        .dark .bg-mesh {
+            background-color: #020617;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(220,100%,10%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(240,100%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(220,100%,10%,1) 0, transparent 50%);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+
+    <!-- Background Layers -->
+    <div class="bg-mesh"></div>
+    <div class="fixed inset-0 z-[-1] bg-grid-pattern dark:bg-grid-pattern-dark opacity-100"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+            <span class="text-xl font-bold tracking-tight">Architecting the Cloud. Connecting the Internet of Things.<span class="text-blue-600">.</span></span>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300 items-center">
+                <a href="#home" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">About</a>
+                <a href="#projects" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
+                
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-xl bg-white/50 dark:bg-slate-800/50 text-slate-700 dark:text-slate-300 hover:ring-2 hover:ring-blue-500/20 transition-all border border-slate-200 dark:border-slate-700">
+                    <svg id="theme-toggle-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M16.243 17.657l.707.707M6.343 6.343l.707-.707M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <svg id="theme-toggle-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+            
+            <div class="flex items-center space-x-4 md:hidden">
+                <button id="theme-toggle-mobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button class="p-2" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Stats/Profile -->
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-40 pb-24 px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+            <div>
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Solution Provider & Tech Lead</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Soumajit Das</h1>
+                <p class="text-xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-xl">
+                    Engineering leader with over <span class="font-bold text-slate-900 dark:text-white">10 years</span> of experience in <span class="text-blue-600 dark:text-blue-400 font-semibold">IoT & NFVI Integration</span>. Specialist in project management and cross-functional team leadership.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/25 hover:-translate-y-1">Connect with Me</a>
+                </div>
+            </div>
+            <!-- Profile Portrait -->
+            <div class="flex justify-center items-center">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500 to-teal-400 rounded-[3rem] blur-2xl opacity-20 dark:opacity-40 group-hover:opacity-60 transition duration-500"></div>
+                    <div class="relative p-2 bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl border border-slate-200 dark:border-slate-700 transform group-hover:rotate-2 transition duration-500">
+                        <img src="profile.jpg" alt="Soumajit Das" class="rounded-[2rem] object-cover w-full aspect-square grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="relative pt-20 pb-5 px-4 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="mt-16 max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Expertise & Summary</h2>
+                <p class="text-slate-600 leading-relaxed italic">
+                    "I am a decisive, results-focused engineering leader with over 10 years of collective experience architecting and executing massive telecom cloud deployments and intelligent edge computing pipelines. My career has been defined by a unique dual capability: mastering complex, low-level technical integrations while successfully leading and scaling high-performing cross-functional engineering teams of up to 15 consultants. Driven by a passion for process automation and infrastructure stability, I excel at turning high-pressure stakeholder requirements into highly reliable, automated production environments globally."
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Projects Grid -->
+    <section id="projects" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="group bg-slate-800 rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/400x250/1e293b/ffffff?text=IoT+Home+Automation" alt="Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2">IoT Automation</h3>
+                        <p class="text-slate-400 text-sm mb-4">Centralized control system using MQTT, Raspberry Pi, and ESP8266 controllers.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group bg-slate-800 rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/400x250/1e293b/ffffff?text=Face+Recognition+POC" alt="Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2">Face Recognition System</h3>
+                        <p class="text-slate-400 text-sm mb-4">POC for recognizing 100+ faces using OpenFaces and OpenCV frameworks.</p>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group bg-slate-800 rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/400x250/1e293b/ffffff?text=Process+Automation" alt="Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2">Storage Server Backup Automation</h3>
+                        <p class="text-slate-400 text-sm mb-4">Custom shell and python scripting for automating HDS backups for SDI3 environments.</p>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="group bg-slate-800 rounded-xl overflow-hidden hover:scale-105 transition duration-300">
+                    <img src="https://placehold.co/400x250/1e293b/ffffff?text=Virtual+Infrastructure+Integration" alt="Project" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2">NFVI Deployment & Integration</h3>
+                        <p class="text-slate-400 text-sm mb-4">Deploying Full Stack NFVI for 4G & 5G Network Throughout the world</p>
+                    </div>
+                </div>				
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="contact" class="py-24 glass mt-20 relative z-10 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-black mb-6">Start a Conversation</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-12 text-lg">Seeking leadership opportunities in IoT architecture and cloud-native infrastructure.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <a href="mailto:soumajitdas3@gmail.com" class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-blue-500 transition">
+                    <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-2">Email</h4>
+                    <p class="font-medium">soumajitdas3@gmail.com</p>
+                </a>
+                <a href="tel:+917980910958" class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-blue-500 transition">
+                    <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-2">Phone</h4>
+                    <p class="font-medium">+91 7980910958</p>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+				<a href="https://www.linkedin.com/in/soumajit-das-8b01b81aa/" class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-blue-500 transition">
+                    <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-2">LinkedIn</h4>
+					<p class="font-medium">Soumajit Das</p>
+                </a>
+				<a href="https://web.whatsapp.com/" class="p-6 bg-white rounded-xl shadow-sm border border-slate-200 hover:border-blue-500 transition">
+                    <h4 class="font-bold text-slate-400 text-xs uppercase tracking-widest mb-2">Whatsapp</h4>
+					<p class="font-medium">+91 7980910958</p>
+                </a>
+            </div>
+            
+            <div class="h-px w-20 bg-slate-300 dark:bg-slate-700 mx-auto mb-10"></div>
+            <p class="text-slate-400 text-xs font-bold tracking-[0.2em] uppercase">&copy; 2026 Soumajit Das. All rights reserved. The source code, design layout, and technical content displayed on this portfolio are the intellectual property of Soumajit Das. Unauthorized replication, redistribution, or commercial use of any material without explicit written consent is strictly prohibited. All corporate trademarks or logos referenced belong to their respective registered owners.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggling Logic
+        const toggleBtn = document.getElementById('theme-toggle');
+        const toggleMobile = document.getElementById('theme-toggle-mobile');
+        const sun = document.getElementById('theme-toggle-sun');
+        const moon = document.getElementById('theme-toggle-moon');
+
+        function updateIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sun.classList.remove('hidden');
+                moon.classList.add('hidden');
+            } else {
+                sun.classList.add('hidden');
+                moon.classList.remove('hidden');
+            }
+        }
+
+        function handleToggle() {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+            updateIcons();
+        }
+
+        // Init
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        updateIcons();
+
+        toggleBtn.addEventListener('click', handleToggle);
+        toggleMobile.addEventListener('click', handleToggle);
+    </script>
+</body>
+</html>
